@@ -9,6 +9,7 @@ const minify = require("gulp-minify");
 const browserSync = require("browser-sync").create(); // Added BrowserSync
 const rename = require("gulp-rename");
 const imagemin = require("gulp-imagemin");
+
 // Define source and destination paths
 const paths = {
    styles: {
@@ -45,7 +46,7 @@ function styles() {
       .pipe(sourcemaps.init())
       .pipe(sass().on("error", sass.logError))
       .pipe(postcss([autoprefixer()]))
-      .pipe(gulp.dest(paths.styles.dest))
+      .pipe(gulp.dest(paths.styles.dest)) // create non-minified version
       .pipe(postcss([autoprefixer(), cssnano()]))
       .pipe(sourcemaps.write("."))
       .pipe(rename({ suffix: ".min" }))
