@@ -83,6 +83,7 @@ function watch() {
 // Default task
 // gulp.task("default", gulp.series("styles", "scripts", "watch"));
 exports.default = gulp.series(styles, scripts, gulp.parallel(watch));
+exports.build = gulp.series(styles, scripts, minimage);
 exports.scripts = gulp.series(scripts);
 exports.styles = gulp.series(styles);
 exports.minimage = gulp.series(minimage);
